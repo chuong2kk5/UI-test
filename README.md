@@ -98,6 +98,7 @@ This document describes the full set of UI screens for a modern, responsive e-co
 - **Terms & Privacy Policy:** Full-width legal content
 - **Return & Refund Policy (optional)**
 
+
 ---
 
 ## 14. Admin Dashboard (for administrators only)
