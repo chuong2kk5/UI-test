@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create an Account</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: #f5f7fa;
+      }
+      .form-input {
+          transition: border-color 0.2s ease;
+          width: 100%;
+      }
+      .form-input:focus {
+          outline: none;
+          border-color: #3498db;
+      }
+      .password-toggle {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: #94a3b8;
+      }
+      .custom-checkbox {
+          position: relative;
+          height: 20px;
+          width: 20px;
+          border: 2px solid #cbd5e1;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+      }
+      .custom-checkbox.checked {
+          background-color: #3498db;
+          border-color: #3498db;
+      }
+      .custom-checkbox.checked::after {
+          content: '';
+          position: absolute;
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .social-btn:hover {
+          background-color: #f1f5f9;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3498db", secondary: "#2c3e50" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen flex items-center justify-center p-4">
+    <div
+      class="w-full max-w-[480px] bg-white rounded-lg shadow-lg overflow-hidden"
+    >
+      <div class="p-8">
+        <div class="text-center mb-8">
+          <h1 class="text-2xl font-semibold text-gray-800">
+            Create an Account
+          </h1>
+          <p class="text-gray-500 mt-2">Join our community today</p>
+        </div>
+
+        <form id="registration-form" class="space-y-6">
+          <div class="relative">
+            <label
+              for="fullname"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              class="form-input px-4 py-3 border border-gray-200 rounded-button text-gray-800"
+              placeholder="Enter your full name"
+            />
+            <div class="error-message hidden text-red-500 text-sm mt-1"></div>
+          </div>
+
+          <div class="relative">
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input px-4 py-3 border border-gray-200 rounded-button text-gray-800"
+              placeholder="Enter your email"
+            />
+            <div class="error-message hidden text-red-500 text-sm mt-1"></div>
+          </div>
+
+          <div class="relative">
+            <label
+              for="password"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input px-4 py-3 border border-gray-200 rounded-button text-gray-800 pr-10"
+                placeholder="Create a password"
+              />
+              <div
+                class="password-toggle w-5 h-5 flex items-center justify-center"
+              >
+                <i class="ri-eye-line"></i>
+              </div>
+            </div>
+            <div class="error-message hidden text-red-500 text-sm mt-1"></div>
+          </div>
+
+          <div class="relative">
+            <label
+              for="confirm-password"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Confirm Password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                class="form-input px-4 py-3 border border-gray-200 rounded-button text-gray-800 pr-10"
+                placeholder="Confirm your password"
+              />
+              <div
+                class="password-toggle w-5 h-5 flex items-center justify-center"
+              >
+                <i class="ri-eye-line"></i>
+              </div>
+            </div>
+            <div class="error-message hidden text-red-500 text-sm mt-1"></div>
+          </div>
+
+          <div class="flex items-start space-x-3 mt-6">
+            <div class="custom-checkbox" id="terms-checkbox"></div>
+            <label for="terms-checkbox" class="text-sm text-gray-600">
+              I agree to the
+              <a href="#" class="text-primary hover:underline"
+                >Terms of Service</a
+              >
+              and
+              <a href="#" class="text-primary hover:underline"
+                >Privacy Policy</a
+              >
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button transition-colors whitespace-nowrap !rounded-button"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <div class="relative flex items-center justify-center my-6">
+          <div class="flex-grow border-t border-gray-200"></div>
+          <span class="flex-shrink mx-4 text-gray-400 text-sm"
+            >or continue with</span
+          >
+          <div class="flex-grow border-t border-gray-200"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <button
+            class="social-btn flex items-center justify-center gap-2 border border-gray-200 rounded-button py-2.5 px-4 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap !rounded-button"
+          >
+            <div class="w-5 h-5 flex items-center justify-center">
+              <i class="ri-google-fill text-lg"></i>
+            </div>
+            <span>Google</span>
+          </button>
+          <button
+            class="social-btn flex items-center justify-center gap-2 border border-gray-200 rounded-button py-2.5 px-4 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap !rounded-button"
+          >
+            <div class="w-5 h-5 flex items-center justify-center">
+              <i class="ri-facebook-fill text-lg"></i>
+            </div>
+            <span>Facebook</span>
+          </button>
+        </div>
+
+        <div class="text-center mt-8">
+          <p class="text-gray-600">
+            Already have an account?
+            <a href="login.html" class="text-primary font-medium hover:underline"
+              >Login</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script id="form-validation">
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registration-form");
+        const fullnameInput = document.getElementById("fullname");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
+        const termsCheckbox = document.getElementById("terms-checkbox");
+        let termsChecked = false;
+
+        // Toggle password visibility
+        const passwordToggles = document.querySelectorAll(".password-toggle");
+        passwordToggles.forEach((toggle) => {
+          toggle.addEventListener("click", function () {
+            const input = this.parentElement.querySelector("input");
+            const icon = this.querySelector("i");
+
+            if (input.type === "password") {
+              input.type = "text";
+              icon.classList.remove("ri-eye-line");
+              icon.classList.add("ri-eye-off-line");
+            } else {
+              input.type = "password";
+              icon.classList.remove("ri-eye-off-line");
+              icon.classList.add("ri-eye-line");
+            }
+          });
+        });
+
+        // Terms checkbox toggle
+        termsCheckbox.addEventListener("click", function () {
+          termsChecked = !termsChecked;
+          if (termsChecked) {
+            this.classList.add("checked");
+          } else {
+            this.classList.remove("checked");
+          }
+        });
+
+        // Validate email format
+        function isValidEmail(email) {
+          const re =
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(String(email).toLowerCase());
+        }
+
+        // Show error message
+        function showError(input, message) {
+          const errorElement = input.parentElement.querySelector(".error-message");
+          errorElement.textContent = message;
+          errorElement.classList.remove("hidden");
+          input.classList.add("border-red-500");
+        }
+
+        // Clear error message
+        function clearError(input) {
+          const errorElement = input.parentElement.querySelector(".error-message");
+          errorElement.textContent = "";
+          errorElement.classList.add("hidden");
+          input.classList.remove("border-red-500");
+        }
+
+        // Input validation on blur
+        fullnameInput.addEventListener("blur", function () {
+          if (this.value.trim() === "") {
+            showError(this, "Full name is required");
+          } else if (this.value.trim().length < 3) {
+            showError(this, "Full name must be at least 3 characters");
+          } else {
+            clearError(this);
+          }
+        });
+
+        emailInput.addEventListener("blur", function () {
+          if (this.value.trim() === "") {
+            showError(this, "Email is required");
+          } else if (!isValidEmail(this.value.trim())) {
+            showError(this, "Please enter a valid email address");
+          } else {
+            clearError(this);
+          }
+        });
+
+        passwordInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            showError(this, "Password is required");
+          } else if (this.value.length < 8) {
+            showError(this, "Password must be at least 8 characters");
+          } else {
+            clearError(this);
+          }
+        });
+
+        confirmPasswordInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            showError(this, "Please confirm your password");
+          } else if (this.value !== passwordInput.value) {
+            showError(this, "Passwords do not match");
+          } else {
+            clearError(this);
+          }
+        });
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          let isValid = true;
+
+          // Validate full name
+          if (fullnameInput.value.trim() === "") {
+            showError(fullnameInput, "Full name is required");
+            isValid = false;
+          } else if (fullnameInput.value.trim().length < 3) {
+            showError(fullnameInput, "Full name must be at least 3 characters");
+            isValid = false;
+          }
+          // Validate email
+          if (emailInput.value.trim() === "") {
+            showError(emailInput, "Email is required");
+            isValid = false;
+          } else if (!isValidEmail(emailInput.value.trim())) {
+            showError(emailInput, "Please enter a valid email address");
+            isValid = false;
+          }
+
+          // Validate password
+          if (passwordInput.value === "") {
+            showError(passwordInput, "Password is required");
+            isValid = false;
+          } else if (passwordInput.value.length < 8) {
+            showError(passwordInput, "Password must be at least 8 characters");
+            isValid = false;
+          }
+          // Validate confirm password
+          if (confirmPasswordInput.value === "") {
+            showError(confirmPasswordInput, "Please confirm your password");
+            isValid = false;
+          } else if (confirmPasswordInput.value !== passwordInput.value) {
+            showError(confirmPasswordInput, "Passwords do not match");
+            isValid = false;
+          }
+
+          // Validate terms checkbox
+          if (!termsChecked) {
+            alert("Please agree to the Terms and Privacy Policy");
+            isValid = false;
+          }
+          if (isValid) {
+            // Form is valid, would submit to server here
+            alert("Registration successful!");
+            form.reset();
+            termsCheckbox.classList.remove("checked");
+            termsChecked = false;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
